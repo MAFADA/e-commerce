@@ -49,9 +49,7 @@
                             </li>
                             
                             <li class="nav-item">
-                                @can('manage-users')
                                 <a class="nav-link" href="{{ route('admin.index') }}">{{ __('Dashboard') }}</a>
-                                @endcan
                             </li>
                         @endauth
 
