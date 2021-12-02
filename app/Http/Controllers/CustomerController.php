@@ -12,8 +12,8 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('user.customer.index');
+    {        
+        return view('user.customer.index');            
     }
 
     /**

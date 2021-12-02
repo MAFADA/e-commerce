@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -24,7 +25,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        $customer = User::all();
+        return view('user.admin.indexCust',['customer'=>$customer]);
     }
 
     /**
