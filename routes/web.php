@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Cust\CustomerController;
+use App\Http\Controllers\Cust\PesanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 /*
@@ -31,3 +32,5 @@ Route::resource('customer', CustomerController::class);
 Route::resource('products', ProductController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/pesan/{id}', [PesanController::class,'index']);

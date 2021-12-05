@@ -1,11 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cust;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Auth;
+use App\Models\Product;
 
 class CustomerController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +26,9 @@ class CustomerController extends Controller
      */
     public function index()
     {        
-        return view('user.customer.index');            
+        $products = Product::paginate(20);
+        // dd($products);
+        return view('user.customer.index', compact('products'));          
     }
 
     /**
@@ -45,7 +60,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        return view('user.',['product'=>$product]);
     }
 
     /**
