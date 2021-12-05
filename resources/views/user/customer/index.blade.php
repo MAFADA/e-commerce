@@ -1,6 +1,17 @@
 @extends('layouts.customer')
 @section('content')
 <div class="container">
+    <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
+    </nav>
+    <div class="container">
+        <form class="form-inline my-2 my-lg-0 row justify-content-end pb-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-12 mb-5">
             <img src="" class="rounded mx-auto d-block" width="100" alt="">
