@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $category=Category::all();
+        return view('user.admin.addproduct',['categories'=>$category]);        
     }
 
     /**
@@ -36,7 +38,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // add
+        Product::create($request->all());
+        // true, redirect to index
+        return redirect()->route('products.index')->with('success','Add Product Success!');
     }
 
     /**
@@ -47,7 +52,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product= Product::find($id);
+        return view('user.admin.showProduct',['product'=>$product]);
     }
 
     /**
@@ -58,7 +64,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('user.admin.editproduct');
     }
 
     /**
@@ -81,6 +88,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }
