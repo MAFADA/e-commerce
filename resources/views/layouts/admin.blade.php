@@ -111,7 +111,7 @@
             <a href="/users" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Customers
+                Users
               </p>
             </a>
           </li>  

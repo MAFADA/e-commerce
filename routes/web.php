@@ -28,7 +28,7 @@ Route::resource('users', UserController::class);
 
 Route::resource('admin', AdminController::class);
 
-Route::resource('customer', CustomerController::class);
+Route::resource('customers', CustomerController::class);
 
 Route::resource('products', ProductController::class);
 
