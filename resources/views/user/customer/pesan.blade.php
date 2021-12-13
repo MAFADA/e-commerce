@@ -9,7 +9,7 @@
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <a href="/customer" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
+            <a href="/customer" class="btn btn-outline-dark"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
         <div class="col-md-12 mt-3">
             <div class="card">
@@ -37,19 +37,23 @@
                                         <td> : </td>
                                         <td>{{$product->description}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>Jumlah Pesanan</td>
-                                        <td> : </td>
-                                        <td>
-                                            <form action="/pesan/{{$product->id}}" method="post">
-                                                @csrf
+                                    <form action="/pesan/{{$product->id}}" method="post">
+                                        @csrf
+                                        <tr>
+                                            <td>Jumlah</td>
+                                            <td> : </td>
+                                            <td>
                                                 <input type="text" name="jumlah_pesanan" class="form-control" required="">
-                                                <button type="submid" class="btn btn-primary mt-3">
-                                                    <i class="fa fa-shopping-cart"></i> Masukkan Keranjang
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                            <button type="submid" class="btn btn-dark btn-block mt-3">
+                                                Masukkan Keranjang <i class="fa fa-shopping-cart"></i>
                                                 </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    </form>
                                 </tbody>
                             </table>
                         </div>

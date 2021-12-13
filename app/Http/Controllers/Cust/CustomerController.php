@@ -26,7 +26,7 @@ class CustomerController extends Controller
      */
     public function index()
     {        
-        $products = Product::paginate(20);
+        $products = Product::all();
         // dd($products);
         return view('user.customer.index', compact('products'));          
     }

@@ -8,6 +8,7 @@ use Auth;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Category;
 use Carbon\Carbon;
 
 class PesanController extends Controller
@@ -75,5 +76,25 @@ class PesanController extends Controller
     	$order->update();
         
         return redirect('customer');
+    }
+
+    public function check_out()
+    {
+        $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $order_detail = OrderDetail::where('order_id', $order->id)->get();
+
+        return view('user.customer.check_out', compact('order', 'order_detail'));
+    }
+
+    public function delete($id)
+    {        
+        $order_detail = OrderDetail::where('id', $id)->first();
+        
+        $order = Order::where('id', $order_detail->order_id)->first();
+        $order->total_price = $order->total_price - $order_detail->total_price_product;
+        $order->update();
+
+        $order_detail->delete();
+        return redirect('check-out');
     }
 }

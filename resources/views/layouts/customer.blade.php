@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
       <div class='container'>
       <a class="navbar-brand" href="#">GXShop</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -22,8 +22,15 @@
         <ul class="navbar-nav mr-auto">
         </ul>
         <ul class="navbar-nav ml-auto">
+          <?php
+            $pesanan_utama = \App\Models\Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+            $notif = \App\Models\OrderDetail::where('order_id', $pesanan_utama->id)->count();
+          ?>
           <li class="nav-item">
-            <a class="nav-link" href="/customer">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/customer">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/check-out">Keranjang <span class="badge badge-danger">{{ $notif }}</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -38,7 +45,7 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
               </form>
-              <a class="dropdown-item" href="#">Akun</a>
+              <a class="dropdown-item" href="/akun/{{Auth::user()->id}}">Akun</a>
             </div>
           </li>
         </ul>
