@@ -81,9 +81,11 @@ class OrderController extends Controller
     public function check_out()
     {
         $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
-        $order_detail = OrderDetail::where('order_id', $order->id)->get();
-
-        return view('user.customer.check_out', compact('order', 'order_detail'));
+        if(!empty($order)){
+            $order_detail = OrderDetail::where('order_id', $order->id)->get();
+            return view('user.customer.check_out', compact('order', 'order_detail'));
+        }
+        return view('user.customer.check_out');
     }
 
     public function delete($id)
@@ -96,5 +98,21 @@ class OrderController extends Controller
 
         $order_detail->delete();
         return redirect('check-out');
+    }
+
+    public function confirm(){
+        $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $order_id = $order->id;
+        $order->status = 1;
+        $order->orderdate = Carbon::now();
+        $order->update();
+        
+        $order_detail = OrderDetail::where('order_id', $order_id)->get();
+        foreach($order_detail as $order_details){
+            $product = Product::where('id', $order_details->product_id)->first();
+            $product->stock -= $order_details->total_product;
+            $product->update();
+        }
+        return view('user/customer/confirm');
     }
 }

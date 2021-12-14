@@ -27,11 +27,15 @@
                             <th>Jumlah</th>
                             <th>Harga</th>
                             <th>Total Harga</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-                    <?php $no = 1;?>
-                    @foreach($order_detail as $detail)
                     <tbody>
+                    <?php 
+                        $no = 1;
+                    ?>
+                    @if(!empty($order_detail))
+                        @foreach($order_detail as $detail)
                         <tr align="center">
                             <td>{{$no++}}</td>
                             <td><img src="{{asset('storage/'.$detail->product->photo)}}" width="100px" ></td>
@@ -51,14 +55,25 @@
                         <tr>
                             <td colspan="5"><strong>Total Harga</strong></td>
                             <td align="center"><strong>Rp. {{number_format($order->total_price)}}</strong></td>
+                            @if($order->total_price == 0)
+                                <td align="center">
+                                    <a href="check-out/confirm" class="btn btn-dark btn-block disabled">Check Out</a>
+                                </td>
+                            @else
+                                <td align="center">
+                                    <a href="check-out/confirm" class="btn btn-dark btn-block">Check Out</a>
+                                </td>
+                            @endif
+                        </tr>
+                    @else
+                        <tr>
+                            <td colspan="5"><strong>Total Harga</strong></td>
+                            <td align="center"><strong>Rp. 0</strong></td>
                             <td align="center">
-                                <form action="" method="post">
-                                    @csrf
-                                    {{method_field('DELETE')}}
-                                    <button type="submit" class="btn btn-dark">Bayar</button>
-                                </form>
+                                <a href="check-out/confirm" class="btn btn-dark btn-block disabled">Check Out</a>
                             </td>
                         </tr>
+                    @endif
                     </tbody>
                 </table>
             </div>

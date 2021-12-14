@@ -43,3 +43,5 @@ Route::get('/akun/{id}', [EditProfileController::class,'index']);
 Route::get('/check-out', [OrderController::class,'check_out']);
 
 Route::delete('/check-out/{id}', [OrderController::class,'delete']);
+
+Route::get('/check-out/confirm', [OrderController::class,'confirm']);

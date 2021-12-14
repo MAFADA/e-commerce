@@ -22,16 +22,24 @@
         <ul class="navbar-nav mr-auto">
         </ul>
         <ul class="navbar-nav ml-auto">
-          <?php
-            $pesanan_utama = \App\Models\Order::where('user_id', Auth::user()->id)->where('status',0)->first();
-            $notif = \App\Models\OrderDetail::where('order_id', $pesanan_utama->id)->count();
-          ?>
           <li class="nav-item">
             <a class="nav-link" href="/customer">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/check-out">Keranjang <span class="badge badge-danger">{{ $notif }}</span></a>
-          </li>
+          <?php
+            $pesanan_utama = \App\Models\Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+          ?>
+          @if(empty($pesanan_utama) || $pesanan_utama->total_price == 0)
+            <li class="nav-item">
+              <a class="nav-link" href="/check-out">Keranjang</a>
+            </li>
+          @else
+            <?php    
+              $notif = \App\Models\OrderDetail::where('order_id', $pesanan_utama->id)->count();
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="/check-out">Keranjang <span class="badge badge-danger">{{ $notif }}</span></a>
+            </li>
+          @endif
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
               {{ Auth::user()->username }}
