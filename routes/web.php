@@ -6,6 +6,7 @@ use App\Http\Controllers\Cust\CustomerController;
 use App\Http\Controllers\Cust\PesanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +37,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/pesan/{id}', [PesanController::class,'index']);
 
 Route::post('/pesan/{id}', [PesanController::class,'pesan']);
+
+Route::resource('orders', OrderController::class);

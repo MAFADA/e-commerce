@@ -13,9 +13,9 @@
                        alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                <h3 class="profile-username text-center">{{ $user->first_name}}  {{ $user->lastname }}</h3>
 
-                <p class="text-muted text-center">Software Engineer</p>
+                <p class="text-muted text-center">{{ $user->role }}</p>
 
                 <!-- <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
@@ -44,20 +44,23 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                <strong><i class="fas fa-book mr-1"></i> Email</strong>
 
                 <p class="text-muted">
-                  B.S. in Computer Science from the University of Tennessee at Knoxville
+                 {{$user->email}}
                 </p>
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
 
-                <p class="text-muted">Malibu, California</p>
+                <p class="text-muted">
+                    {{$user->city}} {{ $user->province }} {{ $user->country }}
+                    {{ $user->address }}
+                </p>
 
                 <hr>
-
+<!-- 
                 <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
 
                 <p class="text-muted">
@@ -66,13 +69,13 @@
                   <span class="tag tag-info">Javascript</span>
                   <span class="tag tag-warning">PHP</span>
                   <span class="tag tag-primary">Node.js</span>
-                </p>
+                </p> -->
 
-                <hr>
+                <!-- <hr> -->
 
-                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                <strong><i class="far fa-file-alt mr-1"></i> Phone Number</strong>
 
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                <p class="text-muted">{{ $user->phone_number }}</p>
               </div>
               <!-- /.card-body -->
             </div>

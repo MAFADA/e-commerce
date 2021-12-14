@@ -20,7 +20,7 @@
                     <td>
                         <form action="/users/{{ $c->id }}" method="post">
                             <a href="/users/{{ $c->id }}" class="btn btn-primary">View</a>                                        
-                            <a href="/users/{{ $c->id }}/edit" class="btn btn-warning">Edit</a>
+                            <!-- <a href="/users/{{ $c->id }}/edit" class="btn btn-warning">Edit</a> -->
                             @csrf
                             @method('DELETE')
                             <button type="submit" name="delete" class="btn btn-danger">Delete</button>
