@@ -6,6 +6,7 @@ use App\Http\Controllers\Cust\CustomerController;
 use App\Http\Controllers\Cust\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\Cust\EditProfileController;
 
 /*
@@ -29,7 +30,7 @@ Route::resource('users', UserController::class);
 
 Route::resource('admin', AdminController::class);
 
-Route::resource('customers', CustomerController::class);
+Route::resource('customer', CustomerController::class);
 
 Route::resource('products', ProductController::class);
 
@@ -47,4 +48,4 @@ Route::delete('/check-out/{id}', [OrderController::class,'delete']);
 
 Route::get('/check-out/confirm', [OrderController::class,'confirm']);
 
-Route::resource('orders', OrderController::class);
+Route::resource('orders', OrdersController::class);

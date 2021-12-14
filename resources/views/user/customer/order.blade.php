@@ -48,7 +48,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="3">
-                                            <button type="submid" class="btn btn-dark btn-block mt-3">
+                                            <button type="submit" class="btn btn-dark btn-block mt-3">
                                                 Masukkan Keranjang <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </td>
