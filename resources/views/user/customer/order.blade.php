@@ -37,7 +37,7 @@
                                         <td> : </td>
                                         <td>{{$product->description}}</td>
                                     </tr>
-                                    <form action="/pesan/{{$product->id}}" method="post">
+                                    <form action="/order/{{$product->id}}" method="post">
                                         @csrf
                                         <tr>
                                             <td>Jumlah</td>

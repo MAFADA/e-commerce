@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Cust\CustomerController;
-use App\Http\Controllers\Cust\PesanController;
+use App\Http\Controllers\Cust\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Cust\EditProfileController;
@@ -35,13 +35,17 @@ Route::resource('products', ProductController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/pesan/{id}', [PesanController::class,'index']);
+Route::get('/order/{id}', [OrderController::class,'index']);
 
-Route::post('/pesan/{id}', [PesanController::class,'pesan']);
+Route::post('/order/{id}', [OrderController::class,'order']);
 
 Route::get('/akun/{id}', [EditProfileController::class,'index']);
 
-Route::get('/check-out', [PesanController::class,'check_out']);
+Route::get('/check-out', [OrderController::class,'check_out']);
 
+<<<<<<< HEAD
 Route::delete('/check-out/{id}', [PesanController::class,'delete']);
 Route::resource('orders', OrderController::class);
+=======
+Route::delete('/check-out/{id}', [OrderController::class,'delete']);
+>>>>>>> 63deb9c (mengubah PesanController -> OrderController)
