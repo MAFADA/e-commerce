@@ -3,21 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
-use App\Models\User;
-
-class UserController extends Controller
+use App\Models\Order;
+use App\Models\OrderDetail;
+class OrderController extends Controller
 {
-    public function __construct()
-    {
-        //$this->middleware('auth');
-        $this->middleware(function($request, $next){
-            if(Gate::allows('manage-users')) return $next($request);
-            abort(403, 'Anda tidak memiliki cukup hak akses');
-        });
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -25,8 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $customer = User::all();
-        return view('user.admin.indexCust',['customer'=>$customer]);
+        $order = Order::all();
+        $detail = OrderDetail::all();
+        return view('user.admin.indexOrders',['order'=>$order,'detail'=>$detail]);
     }
 
     /**
@@ -58,8 +48,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user= User::find($id);
-        return view('user.admin.showCust',['user'=>$user]);
+        //
     }
 
     /**

@@ -6,7 +6,7 @@
                 <th>Name</th>                                    
                 <th>Username</th>
                 <th>Email</th>
-                <th>City</th>    
+                <th>Address</th>    
                 <th>Action</th>                                
             </tr>
         </thead>
@@ -18,9 +18,9 @@
                     <td>{{ $c->email }}</td>    
                     <td>{{ $c->city }}</td>    
                     <td>
-                        <form action="/" method="post">
-                            <a href="/" class="btn btn-primary">View</a>                                        
-                            <a href="/" class="btn btn-warning">Edit</a>
+                        <form action="/users/{{ $c->id }}" method="post">
+                            <a href="/users/{{ $c->id }}" class="btn btn-primary">View</a>                                        
+                            <!-- <a href="/users/{{ $c->id }}/edit" class="btn btn-warning">Edit</a> -->
                             @csrf
                             @method('DELETE')
                             <button type="submit" name="delete" class="btn btn-danger">Delete</button>
