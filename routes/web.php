@@ -7,6 +7,7 @@ use App\Http\Controllers\Cust\PesanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Cust\EditProfileController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +44,4 @@ Route::get('/akun/{id}', [EditProfileController::class,'index']);
 Route::get('/check-out', [PesanController::class,'check_out']);
 
 Route::delete('/check-out/{id}', [PesanController::class,'delete']);
+Route::resource('orders', OrderController::class);

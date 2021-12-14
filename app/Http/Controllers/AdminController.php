@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
+use App\Models\User;
+
 
 class AdminController extends Controller
 {
@@ -13,7 +18,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('user.admin.dashboard');
+        $products = Product::count();
+        $users = User::count();
+        $orders = Order::count();
+
+        return view('user.admin.dashboard',['products'=>$products,'orders'=>$orders,'users'=>$users]);
     }
 
     /**

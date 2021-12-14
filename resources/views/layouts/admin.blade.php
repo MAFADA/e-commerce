@@ -116,7 +116,7 @@
             </a>
           </li>  
           <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/orders" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>Invoice</p>
                 </a>
