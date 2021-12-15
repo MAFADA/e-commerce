@@ -45,7 +45,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('customers.index') }}">{{ __('Landing Page') }}</a>
+                                <a class="nav-link" href="{{ route('customer.index') }}">{{ __('Landing Page') }}</a>
                             </li>
                             
                             <li class="nav-item">
