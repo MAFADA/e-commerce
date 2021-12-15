@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Category;
@@ -101,6 +102,11 @@ class OrderController extends Controller
     }
 
     public function confirm(){
+        $user = User::where('id', Auth::user()->id)->first();
+        if(empty($user->address) || empty($user->phone_number) || empty($user->city) || empty($user->country) || empty($user->province)){
+            return redirect('profile');
+        }
+
         $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
         $order_id = $order->id;
         $order->status = 1;
