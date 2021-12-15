@@ -48,7 +48,11 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::find($id);
+        // $detail= OrderDetail::find($id);
+        // $detail = OrderDetail::where('order_id',$order->id);
+        $detail = OrderDetail::all()->where('order_id',$order->id);
+        return view('user.admin.invoice',['order'=>$order,'detail'=>$detail]);
     }
 
     /**
@@ -82,6 +86,8 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id);
+        $order->delete();
+        return redirect()->route('orders.index');
     }
 }
