@@ -54,6 +54,9 @@
                 @csrf
               </form>
               <a class="dropdown-item" href="/akun/{{Auth::user()->id}}">Akun</a>
+              @can('manage-users')
+              <a class="dropdown-item" href="{{ route('admin.index') }}">{{ __('Dashboard') }}</a>                            
+              @endcan
             </div>
           </li>
         </ul>
