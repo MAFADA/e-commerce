@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\Cust\EditProfileController;
+use App\Http\Controllers\Cust\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,7 @@ Route::get('/order/{id}', [OrderController::class,'index']);
 
 Route::post('/order/{id}', [OrderController::class,'order']);
 
-Route::get('/akun/{id}', [EditProfileController::class,'index']);
+Route::resource('profile', ProfileController::class);
 
 Route::get('/check-out', [OrderController::class,'check_out']);
 

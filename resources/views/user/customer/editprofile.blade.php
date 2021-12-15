@@ -1,6 +1,11 @@
 @extends('layouts.customer')
 @section('content')
 <div class="container">
+    @if(empty($user->address) || empty($user->phone_number) || empty($user->city) || empty($user->country) || empty($user->province))
+    <div class="alert alert-danger" role="alert">
+        Harap Melengkapi Data Diri Agar Dapat Melakukan Check Out <a href="profile" class="alert-link">Edit Profile</a>
+    </div>
+    @endif
     <nav aria-label="breadcrumb" class="mt-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/customer">Home</a></li>
@@ -11,7 +16,7 @@
         <div class="card">
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link btn-outline-dark active" href="#activity" data-toggle="tab">Profile</a></li>
+                    <li class="nav-item mr-1"><a class="nav-link btn-outline-dark active" href="#activity" data-toggle="tab">Profile</a></li>
                     <li class="nav-item"><a class="nav-link btn-outline-dark" href="#settings" data-toggle="tab">Edit</a></li>
                 </ul>
             </div><!-- /.card-header -->
@@ -49,57 +54,97 @@
                     </div>
     
                     <div class="tab-pane" id="settings">
-                        <form class="form-horizontal">
+                        <form action="/profile" method="POST" enctype="multipart/form-data">
+                            {{csrf_field()}}
+                            @method('POST')
+                            <input type="hidden" name="id" value="{{$user->first_name}}"></br>
+
                             <div class="form-group row">
-                                <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                <label for="first_name" class="col-sm-3 col-form-label">Nama Depan</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Nama Depan" id="first_name" type="text" class="form-control" required="required" name="first_name" value="{{$user->first_name}}">
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="inputName" class="col-sm-2 col-form-label">Last Name</label>
-                                <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                <label for="lastname" class="col-sm-3 col-form-label">Nama Belakang</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Nama Belakang" id="lastname" type="text" class="form-control" required="required" name="lastname" value="{{$user->lastname}}">
                                 </div>
                             </div>
+                            
                             <div class="form-group row">
-                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                <label for="email" class="col-sm-3 col-form-label">E-Mail</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" required autocomplete="email" name="email" value="{{$user->email}}">
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                                <label for="phone_number" class="col-sm-3 col-form-label">No. Telefon</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="No. Telefon" id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" autocomplete="phone_number" name="phone_number" value="{{$user->phone_number}}">
+                                    @error('phone_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                <div class="col-sm-10">
-                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                <label for="address" class="col-sm-3 col-form-label">Alamat</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Alamat" id="address" type="text" class="form-control @error('address') is-invalid @enderror" autocomplete="address" name="address" value="{{$user->address}}">
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                                <label for="country" class="col-sm-3 col-form-label">Negara</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Negara" id="country" type="text" class="form-control @error('country') is-invalid @enderror" autocomplete="country" name="country" value="{{$user->country}}">
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                        </label>
-                                    </div>
+                                <label for="province" class="col-sm-3 col-form-label">Propinsi</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Propinsi" id="province" type="text" class="form-control @error('province') is-invalid @enderror" autocomplete="province" name="province" value="{{$user->province}}">
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                <button type="submit" class="btn btn-danger">Submit</button>
+                                <label for="city" class="col-sm-3 col-form-label">Kota</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Kota" id="city" type="text" class="form-control @error('city') is-invalid @enderror" autocomplete="city" name="city" value="{{$user->city}}">
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-3 col-form-label">Password</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="offset-sm-3 col-sm-9">
+                                    <button type="submit" class="btn btn-outline-dark">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>

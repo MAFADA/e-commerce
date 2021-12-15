@@ -47,7 +47,7 @@
                                 <form action="check-out/{{$detail->id}}" method="post">
                                     @csrf
                                     {{method_field('DELETE')}}
-                                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                    <button type="submit" class="btn btn-outline-danger" onclick="return confirm('anda yakin ingin menghapus barang ?');"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -61,7 +61,7 @@
                                 </td>
                             @else
                                 <td align="center">
-                                    <a href="check-out/confirm" class="btn btn-dark btn-block">Check Out</a>
+                                    <a href="check-out/confirm" class="btn btn-dark btn-block" onclick="return confirm('anda yakin ingin check out barang ?');">Check Out</a>
                                 </td>
                             @endif
                         </tr>
