@@ -1,5 +1,18 @@
-@extends('layouts.admin')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invoice</title>
+
+   
+   <!-- Google Font: Source Sans Pro -->   
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('admins/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('admins/dist/css/adminlte.min.css') }}">
+</head>
+<body>
 <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -121,7 +134,7 @@
               <!-- this row will not appear when printing -->
               <div class="row no-print">
                 <div class="col-12">
-                  <a href="/orders/{{$order->id}}/report" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                  <a href="orders/{{$order->id}}/report" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
                   <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                     Payment
                   </button> -->
@@ -135,4 +148,8 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-@endsection
+      <script>
+  window.addEventListener("load", window.print());
+</script>
+</body>
+</html>

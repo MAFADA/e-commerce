@@ -67,8 +67,7 @@ class OrderController extends Controller
             
             $new_order_detail = $product->price * $request->jumlah_pesanan;
             $order_detail->total_price_product = $order_detail->total_price_product + $new_order_detail;
-            $order_detail->update();
-            
+            $order_detail->update();            
         }
     
     	//jumlah total

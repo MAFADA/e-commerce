@@ -15,7 +15,7 @@
         @foreach($product as $p)
         <tr>
             <td>{{ $p->product_name }}</td>    
-            <td>{{ $p->price }}</td>                                  
+            <td>Rp. {{ number_format($p->price) }}</td>                                  
             <td>{{ $p->stock }}</td>    
             <td>
             <form action="/products/{{ $p->id }}" method="post">

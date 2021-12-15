@@ -49,4 +49,6 @@ Route::delete('/check-out/{id}', [OrderController::class,'delete']);
 
 Route::get('/check-out/confirm', [OrderController::class,'confirm']);
 
-Route::resource('orders', OrdersController::class);
+Route::resource('/orders', OrdersController::class);
+
+Route::get('/orders/{id}/report',[OrdersController::class,'report'])->name('orders.report');

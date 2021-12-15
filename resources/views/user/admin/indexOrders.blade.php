@@ -5,7 +5,7 @@
         <tr>          
             <!-- <th>Customer Name</th>   -->            
             <th>Username</th>                                    
-            <th>Date</th>
+            <th>Date & Time</th>
             <th>Status</th>
             <th>Total Price</th>    
             <th>Action</th>        
@@ -17,7 +17,7 @@
             <td>{{ $o->user->username }}</td>    
             <td>{{ $o->orderdate }}</td>                                  
             <td>{{ $o->status }}</td>
-            <td>{{ $o->total_price }}</td>                
+            <td>Rp. {{ number_format($o->total_price) }}</td>                
             <td>
             <form action="orders/{{$o->id}}" method="post">
                 <a href="orders/{{$o->id}}" class="btn btn-primary">View</a>
