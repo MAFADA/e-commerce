@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\Cust\EditProfileController;
 use App\Http\Controllers\Cust\ProfileController;
-
+use App\Http\Controllers\Cust\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
