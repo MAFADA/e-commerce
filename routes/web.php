@@ -50,13 +50,10 @@ Route::delete('/check-out/{id}', [OrderController::class,'delete']);
 
 Route::get('/check-out/confirm', [OrderController::class,'confirm']);
 
-<<<<<<< HEAD
 Route::resource('/orders', OrdersController::class);
 
 Route::get('/orders/{id}/report',[OrdersController::class,'report'])->name('orders.report');
-=======
 Route::resource('orders', OrdersController::class);
 
 Route::get('/payment', [PaymentController::Class,'index']);
 Route::get('/payment/{id}', [PaymentController::Class,'detail']);
->>>>>>> 1b8fe27 (Menu pembayaran)
