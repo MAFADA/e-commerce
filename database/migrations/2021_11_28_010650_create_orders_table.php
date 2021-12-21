@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('status');
             $table->integer('total_price');
+            $table->integer('code');
             $table->datetime('shippeddate')->nullable();
             $table->datetime('arriveddate')->nullable();;
             $table->timestamps();
