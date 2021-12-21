@@ -28,7 +28,7 @@ class OrderController extends Controller
     public function order(Request $request, $id)
     {
         $product = Product::find($id);
-        $tanggal = Carbon::now();
+        $tanggal = Carbon::now('+07:00');
 
         // validasi stok mencukupi
         if($request->jumlah_pesanan > $product->stock){
@@ -44,6 +44,7 @@ class OrderController extends Controller
             $order->user_id = Auth::user()->id;
             $order->orderdate = $tanggal;
             $order->status = 0;
+            $order->code = mt_rand(1,999);
             $order->total_price = 0;
             $order->save();
         }
@@ -109,7 +110,7 @@ class OrderController extends Controller
         $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
         $order_id = $order->id;
         $order->status = 1;
-        $order->orderdate = Carbon::now();
+        $order->orderdate = Carbon::now('+07:00');
         $order->update();
         
         $order_detail = OrderDetail::where('order_id', $order_id)->get();
@@ -118,6 +119,6 @@ class OrderController extends Controller
             $product->stock -= $order_details->total_product;
             $product->update();
         }
-        return view('user/customer/confirm');
+        return redirect('payment');
     }
 }

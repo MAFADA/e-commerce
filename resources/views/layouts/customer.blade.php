@@ -17,6 +17,7 @@
       <!-- <img src="{{asset('storage/images/GXShop.png')}}" alt="GXShop Logo" class="rounded-circle" width="40px" style="opacity: .8">      
       <span class="navbar-brand">GXShop</span>
       </a> -->
+      <img src="{{asset('storage/images/icon/GXShop.png')}}" class="rounded mx-auto d-block" width="40px">
       <a class="navbar-brand" href="/customer">GXShop</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,17 +32,27 @@
           </li>
           <?php
             $pesanan_utama = \App\Models\Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+            $notif_pembayaran = \App\Models\Order::where('user_id', Auth::user()->id)->where('status', '!=',0)->count();
           ?>
           @if(empty($pesanan_utama) || $pesanan_utama->total_price == 0)
+          <li class="nav-item">
+            <a class="nav-link" href="/check-out">Keranjang</a>
+          </li>
+          @else
+          <?php
+            $notif_keranjang = \App\Models\OrderDetail::where('order_id', $pesanan_utama->id)->count();
+          ?>
             <li class="nav-item">
-              <a class="nav-link" href="/check-out">Keranjang</a>
+              <a class="nav-link" href="/check-out">Keranjang <span class="badge badge-danger">{{ $notif_keranjang }}</span></a>
+            </li>
+          @endif
+          @if($notif_pembayaran == 0)
+            <li class="nav-item">
+              <a class="nav-link" href="/payment">Pembayaran</a>
             </li>
           @else
-            <?php    
-              $notif = \App\Models\OrderDetail::where('order_id', $pesanan_utama->id)->count();
-            ?>
             <li class="nav-item">
-              <a class="nav-link" href="/check-out">Keranjang <span class="badge badge-danger">{{ $notif }}</span></a>
+              <a class="nav-link" href="/payment">Pembayaran <span class="badge badge-danger">{{ $notif_pembayaran }}</span></a>
             </li>
           @endif
           <li class="nav-item dropdown">
@@ -57,7 +68,6 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
               </form>
-              <a class="dropdown-item" href="/akun/{{Auth::user()->id}}">Akun</a>
               @can('manage-users')
               <a class="dropdown-item" href="{{ route('admin.index') }}">{{ __('Dashboard') }}</a>                            
               @endcan

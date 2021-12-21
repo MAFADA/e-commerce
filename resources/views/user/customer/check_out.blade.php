@@ -11,7 +11,6 @@
         <div class="col-md-12">
             <a href="/customer" class="btn btn-outline-dark"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
-        
     </div>
 
     <div class="col-md-12 mt-3">
