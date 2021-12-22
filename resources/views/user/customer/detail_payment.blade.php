@@ -69,7 +69,7 @@
                         <tr>
                             <td colspan="5"></td>
                             <td align="center">
-                                <a href="" class="btn btn-dark btn-block" onclick="return confirm('anda yakin ingin membayar?');">Cetak Resi</a>
+                                <a href="/payment/{{$orders->id}}/report" class="btn btn-dark btn-block" target="_blank">Cetak Resi</a>
                             </td>
                         </tr>
                     </tbody>

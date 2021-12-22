@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Carbon\Carbon;
+use PDF;
 
 class PaymentController extends Controller
 {
@@ -31,5 +32,13 @@ class PaymentController extends Controller
         $order_details = OrderDetail::where('order_id', $id)->get();
         
         return view('user/customer/detail_payment', compact('orders', 'order_details'));         
+    }
+
+    public function report($id){
+        $orders = Order::find($id);
+        $order_details = OrderDetail::where('order_id', $id)->get();
+        $users = User::where('id', Auth::user()->id)->first();
+        $pdf = PDF::loadview('user.customer.report',compact('users', 'orders', 'order_details'));
+        return $pdf->stream();
     }
 }

@@ -58,3 +58,5 @@ Route::get('/payment', [PaymentController::Class,'index']);
 Route::get('/payment/{id}', [PaymentController::Class,'detail']);
 
 Route::get('/search', [OrderController::class, 'search'])->name('search');
+
+Route::get('/payment/{id}/report', [PaymentController::class,'report']);
