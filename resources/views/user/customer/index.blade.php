@@ -7,8 +7,8 @@
     </ol>
     </nav>
     <div class="container">
-        <form class="form-inline my-2 my-lg-0 row justify-content-end pb-3">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0 row justify-content-end pb-3" method="get" action="{{ route('search') }}">
+            <input class="form-control mr-sm-2" type="text" name="search" id="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

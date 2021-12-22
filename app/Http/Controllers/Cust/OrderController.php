@@ -121,4 +121,12 @@ class OrderController extends Controller
         }
         return redirect('payment');
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $products = Product::where('product_name', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('user.customer.index', compact('products'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
 }
