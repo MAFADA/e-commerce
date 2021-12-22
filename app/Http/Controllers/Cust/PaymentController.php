@@ -37,7 +37,7 @@ class PaymentController extends Controller
     public function report($id){
         $orders = Order::find($id);
         $order_details = OrderDetail::where('order_id', $id)->get();
-        $users = User::where('id', Auth::user()->id)->first();
+        $users = User::where('id', $orders->user_id)->first();
         $pdf = PDF::loadview('user.customer.report',compact('users', 'orders', 'order_details'));
         return $pdf->stream();
     }
