@@ -7,7 +7,7 @@
         <style type="text/css">
             table tr td,
             table tr th {
-                font-size: 9pt;
+                font-size: 15pt;
             }
         </style>
         <h2 align="center">Resi Pembelian</h2>
@@ -15,7 +15,7 @@
         <b>Name</b> : {{ $users->first_name }} {{ $users->lastname }} <br />
         <b>Alamat</b> : {{ $users->address }} <br />
         <b>Telfon</b> : {{ $users->phone_number }} <br /><br />
-        <table class="table table-responsive table-striped">
+        <table width="600px" align="center">
             <thead>
                 <tr align="center">
                     <th>No</th>
@@ -43,11 +43,11 @@
                     <td><strong>Rp. {{number_format($orders->total_price)}}</strong></td>
                 </tr>
                 <tr align="right">
-                    <td colspan="4"><strong>Kode Unik :</strong></td>
+                    <td colspan="4"><strong>Kode Unik : </strong></td>
                     <td><strong>Rp. {{number_format($orders->code)}}</strong></td>
                 </tr>
                 <tr align="right">
-                    <td colspan="4"><strong>Total Yang Harus Dibayar :</strong></td>
+                    <td colspan="4"><strong>Total Yang Harus Dibayar : </strong></td>
                     <td><strong>Rp. {{number_format($orders->total_price + $orders->code)}}</strong></td>
                 </tr>
             </tbody>
