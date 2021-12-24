@@ -14,10 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
       <div class='container'>
       <a href="/customer" class="brand-link">
-      <!-- <img src="{{asset('storage/images/GXShop.png')}}" alt="GXShop Logo" class="rounded-circle" width="40px" style="opacity: .8">      
-      <span class="navbar-brand">GXShop</span>
-      </a> -->
-      <img src="{{asset('storage/images/icon/GXShop.png')}}" class="rounded mx-auto d-block" width="40px">
+      <img src="{{asset('storage/images/icon/GXShop.png')}}" alt="GXShop Logo" class="rounded-circle mr-2" width="40px" style="opacity: .8">
       <a class="navbar-brand" href="/customer">GXShop</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

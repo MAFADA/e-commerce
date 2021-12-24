@@ -1,5 +1,21 @@
 @extends('layouts.admin')
 @section('content')
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Invoice</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item"><a href="/orders">Orders</a></li>
+              <li class="breadcrumb-item active">Invoice</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -87,28 +103,19 @@
               <!-- /.row -->
 
               <div class="row">
-                <!-- accepted payments column -->
-                <div class="col-6">
-                  <p class="lead">Payment Methods:</p>
-                  <img src="../../dist/img/credit/visa.png" alt="Visa">
-                  <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-                  <img src="../../dist/img/credit/american-express.png" alt="American Express">
-                  <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
-
-                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
-                    plugg
-                    dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                  </p>
-                </div>
+                <!-- accepted payments column -->                
                 <!-- /.col -->
                 <div class="col-6">
                   <p class="lead">Amount Due 2/22/2014</p>
 
                   <div class="table-responsive">
-                    <table class="table">                      
+                    <table class="table"> 
                       <tr>
-                        <th>Total:</th>
+                        <th>Kode: </th>
+                        <td>Rp. {{number_format($order->code)}}</td>
+                      </tr>                     
+                      <tr>
+                        <th>Total: </th>
                         <td>Rp. {{number_format($order->total_price)}}</td>
                       </tr>
                     </table>

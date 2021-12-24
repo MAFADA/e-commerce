@@ -4,13 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Invoice</title>
-
-   
-   <!-- Google Font: Source Sans Pro -->   
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('admins/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('admins/dist/css/adminlte.min.css') }}">
 </head>
 <body>
 <div class="container-fluid">
@@ -46,6 +39,7 @@
                     Email: {{$source->email}}
                   </address>
                 </div>
+                <br>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                   To
@@ -58,6 +52,7 @@
                   </address>
                 </div>
                 <!-- /.col -->
+                <br>
                 <div class="col-sm-4 invoice-col">
                   <b>Invoice #007612</b><br>
                   <br>
@@ -68,14 +63,13 @@
                 <!-- /.col -->
               </div>
               <!-- /.row -->
-
+              <br>
               <!-- Table row -->
               <div class="row">
                 <div class="col-12 table-responsive">
                   <table class="table table-striped">
                     <thead>
-                    <tr>
-                      <th>Product Photo</th>
+                    <tr>                      
                       <th>Qty</th>
                       <th>Product</th>                      
                       <th>Description</th>
@@ -84,8 +78,7 @@
                     </thead>
                     <tbody>
                     @foreach($detail as $d)
-                    <tr>
-                      <td><img src="{{asset('storage/'.$d->product->photo)}}" width="50px"></td>
+                    <tr>                      
                       <td>{{$d->total_product}}</td>
                       <td>{{$d->product->product_name}}</td>
                       <td>{{$d->product->description}}</td>
@@ -100,26 +93,17 @@
               <!-- /.row -->
 
               <div class="row">
-                <!-- accepted payments column -->
-                <div class="col-6">
-                  <p class="lead">Payment Methods:</p>
-                  <img src="../../dist/img/credit/visa.png" alt="Visa">
-                  <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-                  <img src="../../dist/img/credit/american-express.png" alt="American Express">
-                  <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
-
-                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
-                    plugg
-                    dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                  </p>
-                </div>
+                <!-- accepted payments column -->                
                 <!-- /.col -->
                 <div class="col-6">
                   <p class="lead">Amount Due 2/22/2014</p>
 
                   <div class="table-responsive">
-                    <table class="table">                      
+                    <table class="table">  
+                      <tr>
+                        <th>Kode: </th>
+                        <td>Rp. {{number_format($order->code)}}</td>
+                      </tr>                      
                       <tr>
                         <th>Total:</th>
                         <td>Rp. {{number_format($order->total_price)}}</td>
@@ -130,26 +114,26 @@
                 <!-- /.col -->
               </div>
               <!-- /.row -->
-
-              <!-- this row will not appear when printing -->
-              <div class="row no-print">
-                <div class="col-12">
-                  <a href="orders/{{$order->id}}/report" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                  <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                    Payment
-                  </button> -->
-                  <!-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                    <i class="fas fa-download"></i> Generate PDF
-                  </button> -->
-                </div>
-              </div>
             </div>
             <!-- /.invoice -->
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
       <script>
-  window.addEventListener("load", window.print());
+  // window.addEventListener("load", window.print());
 </script>
 </body>
 </html>
+      
+                    <!-- this row will not appear when printing -->
+                    <!-- <div class="row no-print">
+                      <div class="col-12">
+                        <a href="orders/{{$order->id}}/report" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a> -->
+                        <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                          Payment
+                        </button> -->
+                        <!-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                          <i class="fas fa-download"></i> Generate PDF
+                        </button> -->
+                      <!-- </div>
+                    </div> -->

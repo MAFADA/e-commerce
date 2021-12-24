@@ -1,5 +1,21 @@
 @extends('layouts.admin')
 @section('content')
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Customers</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item active">Customers</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <br>
     <table class="table table-responsive table-striped">
         <thead>
             <tr>
@@ -12,6 +28,9 @@
         </thead>
         <tbody>
             @foreach($customer as $c)
+            @if($c->id==1)
+              <!--Admin Tidak Ditampilkan  -->
+            @else
                 <tr>
                     <td>{{ $c->first_name }} {{  $c->lastname }}</td>    
                     <td>{{ $c->username }}</td>                                  
@@ -26,8 +45,10 @@
                             <button type="submit" name="delete" class="btn btn-danger">Delete</button>
                         </form>
                     </td>   
-                </tr>                                
+                </tr>  
+            @endif                              
             @endforeach
+
         </tbody>
     </table>
 @endsection

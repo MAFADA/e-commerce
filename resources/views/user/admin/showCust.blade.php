@@ -1,6 +1,25 @@
 @extends('layouts.admin')
 @section('content')
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Profile Customer</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item"><a href="/users">Customers</a></li>
+              <li class="breadcrumb-item active">Profile Customer</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    
 <div class="container-fluid">
+    <a href="/products" class="btn btn-primary">Back</a>
+    <br><br>
         <div class="row">
           <div class="col-md-3">
 

@@ -1,6 +1,21 @@
 @extends('layouts.admin')
 @section('content')
-
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Add Products</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item"><a href="/products">Products</a></li>
+              <li class="breadcrumb-item active">Detail Products</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 <!-- Default box -->
 <div class="card card-solid">
         <div class="card-body">
@@ -21,11 +36,11 @@
             </div>
             <div class="col-12 col-sm-6">
               <h3 class="my-3">{{ $product->product_name }}</h3>
-              <p>Product Description</p>
+              <!-- <p>Product Description</p> -->
               <hr>              
               <div class="bg-gray py-2 px-3 mt-4">
                 <h2 class="mb-0">
-                  {{ $product->price }}
+                  Rp. {{ number_format($product->price) }}
                 </h2>
                 <!-- <h4 class="mt-0">
                   <small>Ex Tax: $80.00 </small>
