@@ -20,6 +20,7 @@
 <div class="card card-solid">
         <div class="card-body">
         <a href="/products" class="btn btn-primary">Back</a>
+        <br><br>
           <div class="row">
             <div class="col-12 col-sm-6">
               <h3 class="d-inline-block d-sm-none">{{ $product->product_name }}</h3>
