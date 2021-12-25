@@ -58,6 +58,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/profile">Profile</a>
+              @can('manage-users')
+              <a class="dropdown-item" href="{{ route('admin.index') }}">{{ __('Dashboard') }}</a>                            
+              @endcan
               <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
@@ -65,9 +68,6 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
               </form>
-              @can('manage-users')
-              <a class="dropdown-item" href="{{ route('admin.index') }}">{{ __('Dashboard') }}</a>                            
-              @endcan
             </div>
           </li>
         </ul>
