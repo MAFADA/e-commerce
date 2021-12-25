@@ -18,8 +18,8 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item mr-1"><a class="nav-link btn-outline-dark active" href="#activity" data-toggle="tab">Profile</a></li>
                     <li class="nav-item"><a class="nav-link btn-outline-dark" href="#settings" data-toggle="tab">Edit Profile</a></li>
-                    <li class="nav-item"><a class="nav-link btn-outline-dark" href="#addPhoto" data-toggle="tab">Add Photo</a></li>
-                    <li class="nav-item"><a class="nav-link btn-outline-dark" href="#updatePhoto" data-toggle="tab">Edit Photo</a></li>
+                    <li class="nav-item"><a class="nav-link btn-outline-dark" href="#addPhoto" data-toggle="tab">Photo</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link btn-outline-dark" href="#updatePhoto" data-toggle="tab">Edit Photo</a></li> -->
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -176,8 +176,8 @@
                         </form>
                     </div>
 
-                    <div class="tab-pane" id="updatePhoto">
-                    <form action="/profile/updatePhoto" method="post" enctype="multipart/form-data">
+                    <!-- <div class="tab-pane" id="updatePhoto">
+                        <form action="/profile/updatePhoto" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                         @method('PUT')
                             <input type="hidden" name="id" value="{{$user->first_name}}"></br>
@@ -198,7 +198,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
