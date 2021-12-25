@@ -14,7 +14,7 @@
           </div>
         </div>
       </div><!-- /.container-fluid -->
-    </section>    
+    </section>
 <table class="table table-responsive table-striped">
     <thead>
         <tr>          

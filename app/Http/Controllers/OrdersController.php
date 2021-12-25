@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Auth;
@@ -10,6 +11,23 @@ use App\Models\User;
 use PDF;
 class OrdersController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->middleware(function($request, $next){
+            if(Gate::allows('manage-users')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
+    // public function searchOrders(Request $request)
+    // {
+    //     $keyword = $request->search;
+    //     $user = User::where('username','like','%'.$keyword.'%');
+    //     $order = Order::where('user_id',$user->id)->paginate(5);
+    //     return view('user.admin.indexOrders', compact('order'))->with('i', (request()->input('page', 1) - 1) * 5);
+    // }
+
     public function report($id){
         $admin = User::find(1);
         $order = Order::find($id);

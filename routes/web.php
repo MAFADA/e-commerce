@@ -30,11 +30,15 @@ Auth::routes();
 
 Route::resource('users', UserController::class);
 
+Route::get('/searchCustomer',[UserController::class, 'searchCustomer'])->name('users.search');
+
 Route::resource('admin', AdminController::class);
 
 Route::resource('customer', CustomerController::class);
 
 Route::resource('products', ProductController::class);
+
+Route::get('/searchProduct',[ProductController::class,'searchProduct'])->name('products.search');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -55,6 +59,8 @@ Route::delete('/check-out/{id}', [OrderController::class,'delete']);
 Route::get('/check-out/confirm', [OrderController::class,'confirm']);
 
 Route::resource('/orders', OrdersController::class);
+
+// Route::get('/searchOrders',[OrdersController::class, 'searchOrders'])->name('orders.search');
 
 Route::get('/orders/{id}/report',[OrdersController::class,'report'])->name('orders.report');
 

@@ -128,4 +128,11 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.index');
     }
+
+    public function searchProduct(Request $request)
+    {
+        $keyword = $request->search;
+        $product = Product::where('product_name', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('user.admin.indexProduct', compact('product'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 }

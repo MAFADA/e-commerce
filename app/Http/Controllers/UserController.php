@@ -17,6 +17,12 @@ class UserController extends Controller
         });
     }
 
+    public function searchCustomer(Request $request)
+    {
+        $keyword = $request->search;
+        $customer = User::where('username', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('user.admin.indexCust', compact('customer'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 
     /**
      * Display a listing of the resource.
