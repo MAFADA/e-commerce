@@ -11,7 +11,9 @@
           <div class="col-12">
             <div class="callout callout-info">
               <h5><i class="fas fa-info"></i> Note:</h5>
-              This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+              Pesanan anda sudah sukses dicheck out, selanjutnya untuk pembayaran silahkan teransfer ke rekening 
+                    <strong>Bank BRI : 0006-01-016800-53-7 a/n Moh. Iqbal Waldan</strong> dengan nominal : 
+                    <strong>Rp. {{number_format($order->total_price + $order->code)}}</strong>
             </div>
 
 
@@ -58,7 +60,9 @@
                   <br>
                   <b>Order ID:</b> {{$order->id}}<br>
                   <!-- <b>Payment Due:</b> 2/22/2014<br> -->
-                  <b>Account:</b> {{$order->user_id}}
+                  <b>Account:</b> {{$order->user_id}} <br>
+                  <b>Status   : </b>  @if($order->status == 1) Belum dibayar
+                                      @else Sudah dibayar @endif
                 </div>
                 <!-- /.col -->
               </div>
@@ -96,7 +100,7 @@
                 <!-- accepted payments column -->                
                 <!-- /.col -->
                 <div class="col-6">
-                  <p class="lead">Amount Due 2/22/2014</p>
+                  <p class="lead">Amount Due {{$order->orderdate}}</p>
 
                   <div class="table-responsive">
                     <table class="table">  
