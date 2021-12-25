@@ -42,7 +42,11 @@ Route::get('/order/{id}', [OrderController::class,'index']);
 
 Route::post('/order/{id}', [OrderController::class,'order']);
 
-Route::resource('profile', ProfileController::class);
+Route::resource('/profile', ProfileController::class);
+
+Route::post('/profile/storePhoto', [ProfileController::class,'storePhoto'])->name('profile.storePhoto');
+
+Route::post('/profile/updatePhoto', [ProfileController::class,'updatePhoto'])->name('profile.updatePhoto');
 
 Route::get('/check-out', [OrderController::class,'check_out']);
 

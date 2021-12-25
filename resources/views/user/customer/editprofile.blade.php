@@ -17,7 +17,9 @@
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
                     <li class="nav-item mr-1"><a class="nav-link btn-outline-dark active" href="#activity" data-toggle="tab">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link btn-outline-dark" href="#settings" data-toggle="tab">Edit</a></li>
+                    <li class="nav-item"><a class="nav-link btn-outline-dark" href="#settings" data-toggle="tab">Edit Profile</a></li>
+                    <li class="nav-item"><a class="nav-link btn-outline-dark" href="#addPhoto" data-toggle="tab">Add Photo</a></li>
+                    <li class="nav-item"><a class="nav-link btn-outline-dark" href="#updatePhoto" data-toggle="tab">Edit Photo</a></li>
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -29,6 +31,10 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <strong><i class="fas fa-portrait mr-1"></i>Foto Profile</strong><br>
+                                <img src="{{asset('storage/'.$user->photo)}}" width="150px" class="rounded">
+                                <hr>
+
                                 <strong><i class="fas fa-user mr-1"></i>Nama</strong>
                                 <p class="text-muted">{{ Auth::user()->first_name }} {{$user->lastname}}</p>
                                 <hr>
@@ -145,6 +151,52 @@
                                 </div>
                             </div>
 
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="addPhoto">
+                    <form action="/profile/storePhoto" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$user->first_name}}"></br>
+
+                            <div class="form-group row">
+                                <label for="photo" class="col-sm-3 col-form-label">Photo</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Photo" id="photo" type="file" class="form-control" required="required" name="photo">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="offset-sm-3 col-sm-9">                                
+                                    <button type="submit" name="add" class="btn btn-outline-dark">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="updatePhoto">
+                    <form action="/profile/updatePhoto" method="post" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        @method('PUT')
+                            <input type="hidden" name="id" value="{{$user->first_name}}"></br>
+
+                            <div class="form-group row">
+                                <label for="photo" class="col-sm-3 col-form-label">Photo</label>
+                                <div class="col-sm-9">
+                                    <input placeholder="Photo" id="photo" type="file" class="form-control" required="required" name="photo" value="{{$user->photo}}">
+                                    <img width="150px" src="{{asset('storage/'.$user->photo)}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="offset-sm-3 col-sm-9">                                
+                                    <button type="submit" name="edit" class="btn btn-outline-dark">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

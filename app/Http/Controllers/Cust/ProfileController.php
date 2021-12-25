@@ -36,6 +36,26 @@ class ProfileController extends Controller
         //
     }
 
+    public function storePhoto(Request $request){
+        $user = User::where('id', Auth::user()->id)->first();
+        if ($request->file('photo')) {
+            $image_name = $request->file('photo')->store('images','public');
+        }
+        $user->photo = $image_name;
+        $user->save();        
+        return redirect('profile');
+    }
+
+    public function updatePhoto(Request $request){
+        $user = User::where('id', Auth::user()->id)->first();
+        if ($user->photo && file_exists(storage_path('app/public/'.$user->photo))) {
+            \Storage::delete('public/'.$user->photo);
+        }
+        $image_name = $request->file('photo')->store('images','public');
+        $user->update();
+        return redirect('profile');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +67,7 @@ class ProfileController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $user->first_name = $request->first_name;
         $user->lastname = $request->lastname;
-        $user->email = $request->email;
+        $user->email = $request->email;        
         $user->phone_number = $request->phone_number;
         $user->address = $request->address;
         $user->country = $request->country;
