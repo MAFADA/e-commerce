@@ -1,5 +1,7 @@
 <html>
   <head>
+    <title>GXShop | 2021</title>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
