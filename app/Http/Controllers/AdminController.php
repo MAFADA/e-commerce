@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function index()
     {
         $products = Product::count();    
-        $users = User::count();
+        $users = User::where('id','<>',1)->count();
         $orders = Order::count();
 
         return view('user.admin.dashboard',['products'=>$products,'orders'=>$orders,'users'=>$users]);
